@@ -3,9 +3,9 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-	    int[] arrays = {1, 2, 3, 4};
+	int[] arrays = {1, 2, 3, 4};
 
-	    swapsTheElementsOfAnArray(arrays, -3);
+	swapsTheElementsOfAnArray(arrays, -3);
 
         for (int i = 0; i < arrays.length; i++) {
             System.out.print(arrays[i] + " ");
