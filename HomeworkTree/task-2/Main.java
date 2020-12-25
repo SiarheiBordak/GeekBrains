@@ -46,7 +46,7 @@ public class Main {
 
         while (flag) {
             String userWords = createsWordsUser();
-            if (computerWords.compareTo(userWords) == 0) {
+            if (computerWords.equals(userWords)) {
                 System.out.println("You won!");
                 flag = false;
             } else {
