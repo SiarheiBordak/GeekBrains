@@ -7,55 +7,60 @@ public class Main {
         playGame();
     }
 
-    public static boolean checkNumber(int playerNumber, int randomNumber) {
-        return playerNumber > randomNumber;
-    }
-
-    public static int randomNumberInitialization() {
-        Random random = new Random();
-
-        return random.nextInt(10);
-    }
-
-    public static boolean repeatTheInvitationToPlay(Scanner scanner) {
-        System.out.println("Want to play the game again?");
-        System.out.println("1 - Yes.");
-        System.out.println("0 - No.");
-        System.out.println("Enter Answer.");
-
-        return scanner.nextInt() == 1;
-    }
-
-    public static void playGame() {
+    public static boolean invitationNewGame() {
         Scanner scanner = new Scanner(System.in);
-        int randomNumber = randomNumberInitialization();
-        int playerNumber;
+        int userNumber;
 
-        for (int numberOfAttempts = 1; numberOfAttempts < 4; numberOfAttempts++) {
+        do {
+            System.out.println("Want to play the game again?");
+            System.out.println("1 - Yes.");
+            System.out.println("0 - No.");
+            userNumber = scanner.nextInt();
+        } while (userNumber < 0 || userNumber > 1);
+
+        return userNumber == 1;
+    }
+
+    static void guessNumber(int randomNumber) {
+        Scanner scanner = new Scanner(System.in);
+        int userNumber;
+
+        for (int i = 0; i < 3; i++) {
             System.out.println("Insert the number.");
-            playerNumber = scanner.nextInt();
+            userNumber = scanner.nextInt();
 
-            if (playerNumber == randomNumber) {
+            if (userNumber == randomNumber) {
                 System.out.println("You won!");
-                numberOfAttempts = repeatTheInvitationToPlay(scanner) ? 0 : 4;
-                if (numberOfAttempts == 0 ) {
-                    randomNumber = randomNumberInitialization();
-                }
-            } else if (checkNumber(playerNumber, randomNumber)) {
+                break;
+            } else if( userNumber > randomNumber) {
                 System.out.println("Number more.");
             } else {
                 System.out.println("Number less.");
             }
 
-            if (numberOfAttempts == 3) {
+            if (i == 2) {
                 System.out.println("You lost!");
-                numberOfAttempts = repeatTheInvitationToPlay(scanner) ? 0 : 4;
-                if (numberOfAttempts == 0 ) {
-                    randomNumber = randomNumberInitialization();
-                }
             }
         }
+    }
 
-        scanner.close();
+    public static void playGame() {
+        Random random = new Random();
+        int randomNumber;
+        boolean newGame;
+
+        do {
+            randomNumber = random.nextInt(10);
+
+            guessNumber(randomNumber);
+
+            newGame = invitationNewGame();
+
+            if (!newGame) {
+                System.out.println("Finish.");
+                break;
+            }
+
+        } while (true);
     }
 }
