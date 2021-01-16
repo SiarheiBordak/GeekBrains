@@ -1,6 +1,6 @@
-import ru.geekbrains.units.Animal;
-import ru.geekbrains.units.Cat;
-import ru.geekbrains.units.Dog;
+import ru.geekbrains.animals.Animal;
+import ru.geekbrains.animals.Cat;
+import ru.geekbrains.animals.Dog;
 
 public class Main {
 
@@ -25,8 +25,8 @@ public class Main {
         catTwo.run(150);
         catTwo.swim(10);
 
-        System.out.println("Number of animals: " + Animal.getCounter());
-        System.out.println("Number of dogs: " + Dog.getCounter());
-        System.out.println("Number of cats: " + Cat.getCounter());
+        System.out.println("Number of animals: " + Animal.getCountAnimal());
+        System.out.println("Number of dogs: " + Dog.getCountDog());
+        System.out.println("Number of cats: " + Cat.getCountCat());
     }
 }

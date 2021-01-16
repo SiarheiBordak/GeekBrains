@@ -1,20 +1,20 @@
-package ru.geekbrains.units;
+package ru.geekbrains.animals;
 
 public class Cat extends Animal {
-    private static int counter;
+    private static int countCat;
 
     public Cat(String name) {
-        super(name);
-        counter++;
+        super(name, 200, 0);
+        countCat++;
     }
 
-    public static int getCounter() {
-        return counter;
+    public static int getCountCat() {
+        return countCat;
     }
 
     @Override
     public void run(int distance) {
-        if (distance <= 200 && distance > 0) {
+        if (distance <= getMaxRunDistance() && distance > 0) {
             System.out.println(getName() + " ran " + distance + " meters.");
         } else {
             System.out.println(getName() + " won't run this distance.");
