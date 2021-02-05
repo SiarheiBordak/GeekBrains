@@ -37,7 +37,7 @@ public class Main {
 //            System.out.println(method(arraysTwo));
 //            System.out.println(method(arraysThree));
         } catch (MyArraySizeException | MyArrayDataException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
