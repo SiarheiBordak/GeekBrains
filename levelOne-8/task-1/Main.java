@@ -1,3 +1,4 @@
+import ru.geekbrains.gui.CalculatorFrame;
 import ru.geekbrains.interfaces.Actions;
 import ru.geekbrains.obstacles.Treadmill;
 import ru.geekbrains.obstacles.Wall;
@@ -11,6 +12,7 @@ import ru.geekbrains.teams.Team;
 public class Main {
 
     public static void main(String[] args) {
+        new CalculatorFrame();
         Course course = new Course(new Actions[]{new Treadmill(350), new Wall(2)});
         Team team = new Team("'Bones of fate'",
                 new AbstractParticipant[] {
