@@ -30,7 +30,6 @@ public class Main {
         System.arraycopy(arr, h, a2, 0, h);
 
         Thread t1 = new Thread(() -> arrayChanges(a1));
-
         Thread t2 = new Thread(() -> arrayChanges(a2));
 
         t1.start();
