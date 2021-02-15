@@ -38,6 +38,11 @@ public class Main {
 
         try {
             t1.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        try {
             t2.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
