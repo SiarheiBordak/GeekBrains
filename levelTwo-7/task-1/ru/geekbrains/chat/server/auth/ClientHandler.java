@@ -110,4 +110,17 @@ public class ClientHandler {
             e.printStackTrace();
         }
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClientHandler that = (ClientHandler) o;
+        return Objects.equals(server, that.server) && Objects.equals(socket, that.socket) && Objects.equals(in, that.in) && Objects.equals(out, that.out) && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(server, socket, in, out, name);
+    }
 }
