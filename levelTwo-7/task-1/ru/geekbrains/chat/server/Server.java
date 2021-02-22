@@ -45,7 +45,7 @@ public class Server {
         return authenticationService;
     }
 
-    public boolean isNicknameFree(String nickname) {
+    public synchronized boolean isNicknameFree(String nickname) {
         for (ClientHandler handler : handlers) {
             if (handler.getName().equals(nickname)) {
                 return false;
@@ -54,23 +54,23 @@ public class Server {
         return true;
     }
 
-    public void broadcast(String message) {
+    public synchronized void broadcast(String message) {
         for (ClientHandler handler : handlers) {
             handler.sendMessage(message);
         }
     }
 
 
-    public void sendPrivateMessage(ClientHandler sender, String nickname, String message) {
+    public synchronized void sendPrivateMessage(ClientHandler sender, String nickname, String message) {
         ClientHandler client = handlers.stream().filter(clientHandler -> clientHandler.getName().equals(nickname)).findFirst().get();
         client.sendMessage("From " + sender.getName() + ": " + message);
     }
 
-    public void subscribe(ClientHandler handler) {
+    public synchronized void subscribe(ClientHandler handler) {
         handlers.add(handler);
     }
 
-    public void unsubscribe(ClientHandler handler) {
+    public synchronized void unsubscribe(ClientHandler handler) {
         handlers.remove(handler);
     }
 }
